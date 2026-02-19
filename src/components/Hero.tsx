@@ -1,7 +1,8 @@
 "use client";
 
-import React, { useState, useEffect } from "react";import Image from 'next/image';
-import Link from 'next/link';
+import React, { useState, useEffect } from "react";
+import Image from "next/image";
+import Link from "next/link";
 const Hero = () => {
 	const [email, setEmail] = useState("");
 	const [role, setRole] = useState<"hacker" | "judge" | null>(null);
@@ -144,7 +145,6 @@ const Hero = () => {
 			{/* Left Column: Clean Content */}
 			<div className="w-full lg:w-1/2 flex flex-col justify-center px-6 sm:px-12 md:px-16 lg:px-20 xl:px-24 py-20 lg:py-0 bg-white relative z-10 order-2 lg:order-1 shadow-2xl lg:shadow-none">
 				<div className="max-w-xl mx-auto lg:mx-0 flex flex-col items-start">
-					
 					{/* Coming Soon Badge */}
 					<div className="mb-6 lg:mb-8">
 						<div className="px-4 py-1.5 text-xs font-extrabold text-blue-600 bg-blue-50 border border-blue-100 rounded-full tracking-widest uppercase">Coming Soon</div>
@@ -157,7 +157,7 @@ const Hero = () => {
 							<br />
 							<span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-400 inline-block pb-2 pr-2">2026</span>
 						</h1>
-						
+
 						{/* Description with left border */}
 						<div className="mt-6 lg:mt-8 pt-2 border-l-4 border-slate-100 pl-6 flex flex-col gap-3">
 							<p className="text-xl md:text-2xl text-slate-900 font-bold leading-tight">Guelph's In-Person Hackathon.</p>
@@ -176,9 +176,7 @@ const Hero = () => {
 									type="button"
 									onClick={() => setRole("hacker")}
 									className={`flex-1 py-3 px-4 rounded-2xl text-sm font-bold border-2 transition-all duration-200 ${
-										role === "hacker"
-											? "bg-slate-900 border-slate-900 text-white shadow-lg shadow-slate-200"
-											: "bg-white border-slate-200 text-slate-500 hover:border-slate-400 hover:text-slate-700"
+										role === "hacker" ? "bg-slate-900 border-slate-900 text-white shadow-lg shadow-slate-200" : "bg-white border-slate-200 text-slate-500 hover:border-slate-400 hover:text-slate-700"
 									}`}
 								>
 									I'm a Hacker
@@ -187,9 +185,7 @@ const Hero = () => {
 									type="button"
 									onClick={() => setRole("judge")}
 									className={`flex-1 py-3 px-4 rounded-2xl text-sm font-bold border-2 transition-all duration-200 ${
-										role === "judge"
-											? "bg-blue-600 border-blue-600 text-white shadow-lg shadow-blue-200"
-											: "bg-white border-slate-200 text-slate-500 hover:border-slate-400 hover:text-slate-700"
+										role === "judge" ? "bg-blue-600 border-blue-600 text-white shadow-lg shadow-blue-200" : "bg-white border-slate-200 text-slate-500 hover:border-slate-400 hover:text-slate-700"
 									}`}
 								>
 									I'm a Judge
@@ -241,8 +237,10 @@ const Hero = () => {
 										`Wait ${Math.ceil((cooldownUntil - Date.now()) / 1000)}s`
 									) : (
 										<span className="flex items-center gap-2">
-											Notify Me 
-											<svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+											Notify Me
+											<svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+												<path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+											</svg>
 										</span>
 									)}
 								</button>
