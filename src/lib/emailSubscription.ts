@@ -3,7 +3,7 @@
 import { firestore } from './firebase';
 import { doc, getDoc, setDoc, Timestamp, updateDoc } from 'firebase/firestore';
 import { sha256Hash, generateUUID, maskEmail } from './crypto';
-import { Subscription, SubscriptionStatus } from '@/types/subscription';
+import { Subscription, SubscriptionRole, SubscriptionStatus } from '@/types/subscription';
 
 /**
  * Subscribe an email address
@@ -17,7 +17,8 @@ export async function subscribeEmail(
     referrer?: string | null;
     locale: string;
   },
-  source: string = 'homepage'
+  source: string = 'homepage',
+  role: SubscriptionRole | null = null
 ): Promise<{ success: boolean; alreadySubscribed: boolean; subscription: Partial<Subscription> }> {
   const emailHash = await sha256Hash(email.toLowerCase());
   const subscriptionRef = doc(firestore, 'subscriptions', emailHash);
@@ -46,6 +47,7 @@ export async function subscribeEmail(
       const now = Timestamp.now();
       await updateDoc(subscriptionRef, {
         status: 'subscribed',
+        role: role ?? null,
         lastSubscribedAt: now,
         unsubscribedAt: null,
         subscriptionCount: existingData.subscriptionCount + 1,
@@ -80,6 +82,7 @@ export async function subscribeEmail(
     email,
     emailHash,
     status: 'subscribed',
+    role: role ?? null,
     subscribedAt: now,
     lastSubscribedAt: now,
     unsubscribedAt: null,

@@ -49,7 +49,7 @@ export async function POST(request: NextRequest): Promise<NextResponse<Subscribe
   try {
     // Parse request body
     const body: SubscribeRequest = await request.json();
-    const { email: rawEmail, honeypot, source = 'homepage', timestamp } = body;
+    const { email: rawEmail, honeypot, source = 'homepage', timestamp, role = null } = body;
     
     // Get client information
     const ip = getClientIP(request);
@@ -213,7 +213,8 @@ export async function POST(request: NextRequest): Promise<NextResponse<Subscribe
         referrer,
         locale,
       },
-      source
+      source,
+      role
     );
     
     // Log metrics

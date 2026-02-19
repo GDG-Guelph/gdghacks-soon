@@ -4,10 +4,13 @@ import { Timestamp } from 'firebase/firestore';
 
 export type SubscriptionStatus = 'subscribed' | 'unsubscribed';
 
+export type SubscriptionRole = 'hacker' | 'judge';
+
 export interface Subscription {
   email: string;
   emailHash: string;
   status: SubscriptionStatus;
+  role: SubscriptionRole | null;
   
   // Timestamps
   subscribedAt: Timestamp;
@@ -92,6 +95,7 @@ export interface SubscribeRequest {
   honeypot?: string;
   source?: string;
   timestamp?: number; // Client timestamp for timing analysis
+  role?: SubscriptionRole | null;
 }
 
 export interface SubscribeResponse {
