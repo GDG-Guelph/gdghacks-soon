@@ -133,23 +133,19 @@ const Hero = () => {
 	// Split screen layout: Clean content on left, full image on right
 	return (
 		<section className="flex flex-col lg:flex-row min-h-screen w-full relative">
-			{/* Logo - Positioned top-left on large screens, centered top on mobile */}
-			<div className="absolute top-6 left-6 lg:top-12 lg:left-12 z-20">
+			{/* Logo + Coming Soon - Positioned top-left */}
+			<div className="absolute top-6 left-6 lg:top-12 lg:left-12 z-20 flex items-center gap-3">
 				<Link href="/" className="block hover:opacity-80 transition-opacity duration-300">
 					<div className="relative w-12 h-12 lg:w-16 lg:h-16">
 						<Image src="/gdg-logo.jpg" alt="GDGHacks Logo" fill className="object-contain" />
 					</div>
 				</Link>
+				<div className="px-4 py-1.5 text-xs font-extrabold text-blue-600 bg-blue-50 border border-blue-100 rounded-full tracking-widest uppercase">Coming Soon</div>
 			</div>
 
 			{/* Left Column: Clean Content */}
 			<div className="w-full lg:w-1/2 flex flex-col justify-center px-6 sm:px-12 md:px-16 lg:px-20 xl:px-24 py-20 lg:py-0 bg-white relative z-10 order-2 lg:order-1 shadow-2xl lg:shadow-none">
 				<div className="max-w-xl mx-auto lg:mx-0 flex flex-col items-start">
-					{/* Coming Soon Badge */}
-					<div className="mb-6 lg:mb-8">
-						<div className="px-4 py-1.5 text-xs font-extrabold text-blue-600 bg-blue-50 border border-blue-100 rounded-full tracking-widest uppercase">Coming Soon</div>
-					</div>
-
 					{/* Main Heading Group */}
 					<div className="mb-10 lg:mb-12">
 						<h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-7xl xl:text-8xl font-black tracking-tighter leading-[0.9] text-slate-900 pb-2 -ml-[0.05em]">
