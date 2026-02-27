@@ -133,45 +133,47 @@ const Hero = () => {
 	// Split screen layout: Clean content on left, full image on right
 	return (
 		<section className="flex flex-col lg:flex-row min-h-screen w-full relative">
-			{/* Logo + Coming Soon - Positioned top-left */}
-			<div className="absolute top-6 left-6 lg:top-12 lg:left-12 z-20 flex items-center gap-3">
-				<Link href="/" className="block hover:opacity-80 transition-opacity duration-300">
-					<div className="relative w-12 h-12 lg:w-16 lg:h-16">
-						<Image src="/gdg-logo.jpg" alt="GDGHacks Logo" fill className="object-contain" />
-					</div>
-				</Link>
-				<div className="px-4 py-1.5 text-xs font-extrabold text-blue-600 bg-blue-50 border border-blue-100 rounded-full tracking-widest uppercase">Coming Soon</div>
-			</div>
-
 			{/* Left Column: Clean Content */}
-			<div className="w-full lg:w-1/2 flex flex-col justify-center px-6 sm:px-12 md:px-16 lg:px-20 xl:px-24 py-20 lg:py-0 bg-white relative z-10 order-2 lg:order-1 shadow-2xl lg:shadow-none">
-				<div className="max-w-xl mx-auto lg:mx-0 flex flex-col items-start">
+			<div className="w-full lg:w-1/2 flex flex-col px-6 sm:px-10 md:px-16 lg:px-16 xl:px-24 py-8 sm:py-12 bg-white relative z-10 order-2 lg:order-1 shadow-2xl lg:shadow-none min-h-[60vh] lg:min-h-screen overflow-y-auto">
+				
+				{/* Logo + Coming Soon - In normal document flow to prevent overlap */}
+				<div className="flex items-center gap-3 w-full max-w-lg sm:max-w-xl mx-auto lg:mx-0 mb-8 sm:mb-12 lg:mb-0 shrink-0">
+					<Link href="/" className="block hover:opacity-80 transition-opacity duration-300">
+						<div className="relative w-12 h-12 lg:w-16 lg:h-16">
+							<Image src="/gdg-logo.jpg" alt="GDGHacks Logo" fill className="object-contain" />
+						</div>
+					</Link>
+					<div className="px-4 py-1.5 text-xs font-extrabold text-blue-600 bg-blue-50 border border-blue-100 rounded-full tracking-widest uppercase whitespace-nowrap">Coming Soon</div>
+				</div>
+
+				{/* Main Content - Centered vertically */}
+				<div className="w-full max-w-lg sm:max-w-xl mx-auto lg:mx-0 flex flex-col items-start my-auto py-8 lg:py-12">
 					{/* Main Heading Group */}
-					<div className="mb-10 lg:mb-12">
-						<h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-7xl xl:text-8xl font-black tracking-tighter leading-[0.9] text-slate-900 pb-2 -ml-[0.05em]">
+					<div className="mb-8 sm:mb-10 lg:mb-12 w-full">
+						<h1 className="text-[clamp(3rem,8vw,6rem)] font-black tracking-tighter leading-[0.9] text-slate-900 pb-2 -ml-[0.05em] break-words">
 							GDGHacks
 							<br />
 							<span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-400 inline-block pb-2 pr-2">2026</span>
 						</h1>
 
 						{/* Description with left border */}
-						<div className="mt-6 lg:mt-8 pt-2 border-l-4 border-slate-100 pl-6 flex flex-col gap-3">
-							<p className="text-xl md:text-2xl text-slate-900 font-bold leading-tight">Guelph's In-Person Hackathon.</p>
-							<p className="text-lg text-slate-500 font-medium max-w-md leading-relaxed">Join 500+ innovators to build, learn, and connect.</p>
+						<div className="mt-6 sm:mt-8 pt-2 border-l-4 border-slate-100 pl-4 sm:pl-6 flex flex-col gap-2 sm:gap-3">
+							<p className="text-lg sm:text-xl md:text-2xl text-slate-900 font-bold leading-tight">Guelph's In-Person Hackathon.</p>
+							<p className="text-base sm:text-lg text-slate-500 font-medium max-w-md leading-relaxed">Join 500+ innovators to build, learn, and connect.</p>
 						</div>
 					</div>
 
 					{/* Mailing List Form Section */}
 					<div className="w-full">
-						<p className="text-sm uppercase tracking-wider text-slate-400 font-bold mb-4 pl-1">Get notified when applications open</p>
+						<p className="text-xs sm:text-sm uppercase tracking-wider text-slate-400 font-bold mb-3 sm:mb-4 pl-1">Get notified when applications open</p>
 
-						<form onSubmit={handleSubmit} className="space-y-4">
+						<form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4 w-full">
 							{/* Role selector */}
-							<div className="flex gap-3">
+							<div className="flex flex-col sm:flex-row gap-2 sm:gap-3 w-full">
 								<button
 									type="button"
 									onClick={() => setRole("hacker")}
-									className={`flex-1 py-3 px-4 rounded-2xl text-sm font-bold border-2 transition-all duration-200 ${
+									className={`flex-1 py-3 px-4 rounded-xl sm:rounded-2xl text-sm font-bold border-2 transition-all duration-200 ${
 										role === "hacker" ? "bg-slate-900 border-slate-900 text-white shadow-lg shadow-slate-200" : "bg-white border-slate-200 text-slate-500 hover:border-slate-400 hover:text-slate-700"
 									}`}
 								>
@@ -180,7 +182,7 @@ const Hero = () => {
 								<button
 									type="button"
 									onClick={() => setRole("judge")}
-									className={`flex-1 py-3 px-4 rounded-2xl text-sm font-bold border-2 transition-all duration-200 ${
+									className={`flex-1 py-3 px-4 rounded-xl sm:rounded-2xl text-sm font-bold border-2 transition-all duration-200 ${
 										role === "judge" ? "bg-blue-600 border-blue-600 text-white shadow-lg shadow-blue-200" : "bg-white border-slate-200 text-slate-500 hover:border-slate-400 hover:text-slate-700"
 									}`}
 								>
@@ -206,20 +208,20 @@ const Hero = () => {
 								}}
 							/>
 
-							<div className="flex flex-col sm:flex-row gap-3">
+							<div className="flex flex-col sm:flex-row gap-2 sm:gap-3 w-full">
 								<input
 									type="email"
 									value={email}
 									onChange={(e) => setEmail(e.target.value)}
 									placeholder="Enter your email address"
-									className="flex-1 px-5 py-4 text-base rounded-2xl border-2 border-slate-100 bg-slate-50 focus:bg-white focus:border-blue-600 focus:ring-4 focus:ring-blue-50 focus:outline-none transition-all duration-300 placeholder:text-slate-400 font-medium text-slate-900"
+									className="flex-1 px-4 sm:px-5 py-3 sm:py-4 text-sm sm:text-base rounded-xl sm:rounded-2xl border-2 border-slate-100 bg-slate-50 focus:bg-white focus:border-blue-600 focus:ring-4 focus:ring-blue-50 focus:outline-none transition-all duration-300 placeholder:text-slate-400 font-medium text-slate-900"
 									required
 									disabled={isDisabled}
 								/>
 								<button
 									type="submit"
 									disabled={isDisabled}
-									className="group px-8 py-4 text-base font-bold text-white bg-slate-900 rounded-2xl hover:bg-blue-600 focus:ring-4 focus:ring-slate-200 transition-all duration-300 shadow-lg shadow-slate-200 hover:shadow-blue-200 whitespace-nowrap disabled:opacity-70 disabled:hover:bg-slate-900 flex items-center justify-center"
+									className="group px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base font-bold text-white bg-slate-900 rounded-xl sm:rounded-2xl hover:bg-blue-600 focus:ring-4 focus:ring-slate-200 transition-all duration-300 shadow-lg shadow-slate-200 hover:shadow-blue-200 whitespace-nowrap disabled:opacity-70 disabled:hover:bg-slate-900 flex items-center justify-center"
 								>
 									{isLoading ? (
 										<span className="flex items-center justify-center gap-2">
